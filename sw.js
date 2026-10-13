@@ -1,5 +1,5 @@
 // 离线缓存：静态资源 cache-first；数据(JSON/API) network-first，离线回退缓存
-const C = 'kj-v3';
+const C = 'kj-v4';
 self.addEventListener('install', e => { e.waitUntil(caches.open(C).then(c => c.addAll(['./', './index.html']))); self.skipWaiting(); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== C).map(k => caches.delete(k))))); self.clients.claim(); });
 self.addEventListener('fetch', e => {
